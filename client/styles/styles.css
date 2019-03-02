@@ -88,3 +88,15 @@ form input[type=text] {
     background-color: #0090da;
 }
 
+.names {
+    font-weight: bold;
+    margin: 5px 0px;
+    cursor:pointer;
+}
+#headerButtons{
+    display:flex;
+    /*align-content: space-around;*/
+}
+#friends{
+    margin-left:50px;
+}

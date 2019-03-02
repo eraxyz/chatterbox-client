@@ -25,10 +25,18 @@
     <div id="main">
       <h1>chatterbox</h1>
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
-      <div id="rooms">
-        Room:
-        <select></select>
-        <button>Add Room</button>
+      <div id="headerButtons">
+        <div id="rooms">
+          Room:
+          <select></select>
+          <button>Add Room</button>
+        </div>
+        <div id="friends"> 
+          <span>Friends</span>
+          <select id="friendDrop">
+            <option id="all">Show All</option>
+          </select>
+        </div>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
@@ -45,6 +53,7 @@
     <script src="client/scripts/roomsView.js"></script>
     <script src="client/scripts/messageView.js"></script>
     <script src="client/scripts/messagesView.js"></script>
+    <script src="client/scripts/friendsView.js"></script>
     <script src="client/scripts/app.js"></script>
     <script>
       $(() => App.initialize());

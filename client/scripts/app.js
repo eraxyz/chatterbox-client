@@ -8,12 +8,13 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
-    RoomsView.initialize();
     MessagesView.initialize();
-
+    RoomsView.initialize();
+    // FriendsView.initialize();
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+    
 
   },
 
