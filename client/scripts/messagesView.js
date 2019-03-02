@@ -14,7 +14,7 @@ var MessagesView = {
       RoomsView.render();
       MessagesView.render();
       FriendsView.initialize();
-      FriendsView.addFriend();
+      // FriendsView.add Friend();
     });
   },
   updateLoop: function() {

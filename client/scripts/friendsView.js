@@ -7,7 +7,7 @@ var FriendsView = {
       FriendsView.updateFriendsMessages();
     });
     
-    // FriendsView.addFriend();
+    FriendsView.addFriend();
   },
   option: _.template('<option value ="<%-friend%>"><%-friend%></option>'),
   render: function() {
@@ -20,12 +20,11 @@ var FriendsView = {
     }
   },
   addFriend: function() {
-    debugger;
     // $('.names').on('hover',()=>{})
     $('.username').on('click', function(e) {
       e.preventDefault(); 
       Friends.toggleStatus();
-      debugger;
+      
       let name = $(this).html();
       console.log(name);
       if (window.confirm('Add friend ' + name + '?')) {
