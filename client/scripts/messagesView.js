@@ -42,13 +42,20 @@ var MessagesView = {
       })
     }
   },
+  renderMessage: function(message){
+    
+    MessagesView.$chats.append(MessageView.render(message));
+    FriendsView.initialize();
+    FriendsView.addFriend();
+    
+  },
   createMessage: function(list) {
     for (let room of Rooms.roomList) {
       MessagesView.dataArray[room] = [];
     }
     for (let message of list) {
       if (message.username !== undefined && message.roomname !== undefined && message.text !== undefined) {
-        let obj = {chatroom: message.roomname, username: message.username, message: message.text};
+        let obj = {roomname: message.roomname, username: message.username, message: message.text};
         MessagesView.dataArray[message.roomname].push(MessageView.render(obj));
       }
     }
