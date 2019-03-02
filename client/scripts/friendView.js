@@ -6,4 +6,4 @@ var FriendView = {
         
       </div>
     `)
-}
+};

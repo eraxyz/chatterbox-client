@@ -6,26 +6,27 @@ var MessagesView = {
   initialize: function() {
     MessagesView.getMessages();
   },
-  getMessages: function(){
+  getMessages: function() {
     Parse.readAll((data)=> {
-    Messages.list = data;
-    RoomsView.getRooms(Messages.list);
-    MessagesView.createMessage(Messages.list.results);
-    RoomsView.render();
-    MessagesView.render();
-    FriendsView.initialize();
-    })
+      Messages.list = data;
+      RoomsView.getRooms(Messages.list);
+      MessagesView.createMessage(Messages.list.results);
+      RoomsView.render();
+      MessagesView.render();
+      FriendsView.initialize();
+      FriendsView.addFriend();
+    });
   },
-  updateLoop: function(){
+  updateLoop: function() {
     Parse.readAll((data)=> {
       Messages.list = data;
       MessagesView.createMessage(Messages.list.results);
       MessagesView.render();
       FriendsView.initialize();
     });
-    setTimeout(MessagesView.updateLoop,1000)
+    setTimeout(MessagesView.updateLoop, 1000);
   },
-  updateResults: function(){
+  updateResults: function() {
     Parse.readAll((data)=> {
       Messages.list = data;
       MessagesView.createMessage(Messages.list.results);
@@ -34,19 +35,24 @@ var MessagesView = {
     });
   },
   render: function() {
-    let currentRoom = $('#rooms select option:selected').val()
+    let currentRoom = $('#rooms select option:selected').val();
     MessagesView.$chats.text('');
-    if(MessagesView.dataArray[currentRoom] !== undefined){
+    if (MessagesView.dataArray[currentRoom] !== undefined) {
       MessagesView.dataArray[currentRoom].forEach(function(message) {
         MessagesView.$chats.append(message);
-      })
+      });
     }
   },
-  renderMessage: function(message){
+  renderMessage: function(message) {
     
     MessagesView.$chats.append(MessageView.render(message));
-    FriendsView.initialize();
-    FriendsView.addFriend();
+    // FriendsView.initialize();
+    Friends.toggleStatus();
+    Parse.create(message, function(){ 
+      MessagesView.getMessages();
+    });
+    // MessagesView.getMessages();
+    
     
   },
   createMessage: function(list) {

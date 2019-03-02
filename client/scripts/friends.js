@@ -1,6 +1,6 @@
 var Friends = {
   list: {},
-  toggleStatus: function(){ 
-    console.log('clicked')
+  toggleStatus: function() { 
+    console.log('clicked');
   },
 };
